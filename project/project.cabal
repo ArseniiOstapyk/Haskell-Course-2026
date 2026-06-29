@@ -1,0 +1,45 @@
+cabal-version:      3.0
+name:               csp-language
+version:            0.1.0.0
+build-type:         Simple
+license:            MIT
+
+common warnings
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns
+
+library
+  import: warnings
+  exposed-modules:
+      CSP.AST
+      CSP.Parser
+      CSP.Solver
+  hs-source-dirs: src
+  build-depends:
+      base >=4.14 && <5,
+      containers >=0.6
+  default-language: Haskell2010
+
+executable csp
+  import: warnings
+  main-is: Main.hs
+  hs-source-dirs: src
+  other-modules:
+      CSP.AST
+      CSP.Parser
+      CSP.Solver
+  build-depends:
+      base >=4.14 && <5,
+      containers >=0.6,
+      csp-language
+  default-language: Haskell2010
+
+test-suite csp-tests
+  import: warnings
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs: test
+  build-depends:
+      base >=4.14 && <5,
+      containers >=0.6,
+      csp-language
+  default-language: Haskell2010

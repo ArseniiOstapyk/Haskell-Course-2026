@@ -1,0 +1,14 @@
+// Map colouring (Australia)
+var WA, NT, SA, Q, NSW, V, T : { red, green, blue };
+
+constraint WA  /= NT;
+constraint WA  /= SA;
+constraint NT  /= SA;
+constraint NT  /= Q;
+constraint SA  /= Q;
+constraint SA  /= NSW;
+constraint SA  /= V;
+constraint Q   /= NSW;
+constraint NSW /= V;
+
+solve;
